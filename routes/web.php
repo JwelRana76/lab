@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::group(['middleware'=>['auth']], function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::group(['prefix' => 'role', 'as' => 'role.'], function() {
+    Route::group(['prefix' => 'setting/role', 'as' => 'role.'], function () {
         Route::get('/',[RoleController::class, 'index'])->name('index');
     });
 });

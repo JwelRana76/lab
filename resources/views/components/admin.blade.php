@@ -19,10 +19,12 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
-    
     <!-- Custom styles for this page -->
-    <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+    <link href="/css/jquery.dataTables.css" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" /> --}}
+    
+    
+    <link rel="stylesheet" href="/css/custom.css">
 </head>
 
 <body id="page-top">
@@ -99,20 +101,23 @@
     <!-- Custom scripts for all pages-->
     <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
+    <script src="/js/jquery.dataTables.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script> --}}
+    <script src="/js/yajradatatable.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     
-    <!-- Page level plugins -->
-    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="/js/demo/datatables-demo.js"></script>
-
+    
+    <script src="/js/dataTables.buttons.min.js"></script>
+    <script src="/js/buttons.colVis.min.js"></script>
+    <script src="/js/vfs_fonts.js"></script>
+    <script src="/js/jszip.min.js"></script>
+    <script src="/js/buttons.html5.min.js"></script>
+    <script src="/js/dataTables.select.min.js"></script>
+    <script src="/js/buttons.print.min.js"></script>
+    
+    @stack('js')
 
 </body>
 
