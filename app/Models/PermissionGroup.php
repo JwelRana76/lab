@@ -10,4 +10,10 @@ class PermissionGroup extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function permissions()
+    {
+        return $this->hasMany(Permission::class, 'permission_group_id', 'id');
+    }
+    
 }

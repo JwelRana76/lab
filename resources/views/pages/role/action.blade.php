@@ -1,10 +1,5 @@
-<!-- Default dropleft button -->
-<div class="btn-group dropleft">
-    <button type="button" class="action-button dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        <i class="fas fa-fw fa-ellipsis-v"></i>
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href=""><i class="fa-regular text-primary fa-pen-to-square"></i> Edit</a>
-        <a class="dropdown-item" href="" onclick="return confirm('Are you sure to Delete this record..??')"><i class="fa-regular text-danger fa-trash-can"></i> Delete</a>
-    </div>  
-</div>
+<a href="{{ route('role.permission',$item->id) }}" class="btn btn-sm btn-primary mr-2">Permission</a>
+<button type="button" class="btn btn-sm btn-primary mr-2" data-toggle="modal" data-target="#editRoleModal' . $role->id . '">
+    <i class="fas fa-fw fa-pen-square"></i>
+</button>
+<a href="" class="btn btn-sm btn-primary mr-2 bg-danger"><i class="fas fa-fw fa-trash"></i></a>

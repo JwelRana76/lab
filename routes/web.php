@@ -24,6 +24,8 @@ Route::group(['middleware'=>['auth']], function() {
 
     Route::group(['prefix' => 'setting/role', 'as' => 'role.'], function () {
         Route::get('/',[RoleController::class, 'index'])->name('index');
+        Route::get('/permission/{id}', [RoleController::class, 'permission'])->name('permission');
+        Route::post('/permission/store/{id}', [RoleController::class, 'permission_store'])->name('permission.store');
     });
 });
 
