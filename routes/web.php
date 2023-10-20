@@ -24,6 +24,10 @@ Route::group(['middleware'=>['auth']], function() {
 
     Route::group(['prefix' => 'setting/role', 'as' => 'role.'], function () {
         Route::get('/',[RoleController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('edit');
+        Route::post('/store', [RoleController::class, 'store'])->name('store');
+        Route::get('/delete/{id}', [RoleController::class, 'delete'])->name('delete');
+        Route::post('/update/{id}', [RoleController::class, 'update'])->name('update');
         Route::get('/permission/{id}', [RoleController::class, 'permission'])->name('permission');
         Route::post('/permission/store/{id}', [RoleController::class, 'permission_store'])->name('permission.store');
     });

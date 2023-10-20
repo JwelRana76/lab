@@ -116,6 +116,8 @@
     <script src="/js/buttons.html5.min.js"></script>
     <script src="/js/dataTables.select.min.js"></script>
     <script src="/js/buttons.print.min.js"></script>
+    <!-- Include Toastr CSS and JS via CDN -->
+
     
     @stack('js')
 

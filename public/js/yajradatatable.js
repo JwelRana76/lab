@@ -77,7 +77,6 @@ function itd_makeDataTable(e = "", n = "", t = []) {
             
             
             const sumCols = [];
-            console.log(sumCols); 
             api.columns().every(function () {
                 const column = this;
                 const columnData = column.data();
