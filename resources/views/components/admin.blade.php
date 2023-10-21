@@ -22,9 +22,10 @@
     <!-- Custom styles for this page -->
     <link href="/css/jquery.dataTables.css" rel="stylesheet">
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" /> --}}
-    
+    <link rel="stylesheet" href="/css/bootstrap-select.min.css">
     
     <link rel="stylesheet" href="/css/custom.css">
+
 </head>
 
 <body id="page-top">
@@ -117,6 +118,8 @@
     <script src="/js/dataTables.select.min.js"></script>
     <script src="/js/buttons.print.min.js"></script>
     <!-- Include Toastr CSS and JS via CDN -->
+    <script src="/js/bootstrap-select.min.js"></script>
+
 
     
     @stack('js')
