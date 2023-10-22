@@ -3,10 +3,13 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+            @if (setting()->logo)
+                <img src="/upload/{{ setting()->logo }}" alt="" width="80px">    
+            @endif
+            <img src="/upload/default.png" alt="" width="80px">
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text">{{ setting()->name_short }}</div>
     </a>
 
     <!-- Divider -->
@@ -42,6 +45,19 @@
         </div>
     </li>
     <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link {{Request::is('setting*')?'':'collapsed'}}" href="#" data-toggle="collapse" data-target="#doctor"
+            aria-expanded="true" aria-controls="doctor">
+            <i class="fas fa-fw fa-user-doctor"></i>
+            <span>Doctor</span>
+        </a>
+        <div id="doctor" class="collapse {{Request::is('doctor*')?'show':''}}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item {{Request::is('doctor/create')?'active':''}}" href="{{ route('doctor.create') }}"> <i class="fas fa-fw fa-arrow-right mr-2"></i>Add Doctor</a>
+                <a class="collapse-item {{Request::is('doctor')?'active':''}}" href="{{ route('doctor.index') }}"> <i class="fas fa-fw fa-arrow-right mr-2"></i>Doctor List</a>
+            </div>
+        </div>
+    </li>
     <li class="nav-item">
         <a class="nav-link {{Request::is('setting*')?'':'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">

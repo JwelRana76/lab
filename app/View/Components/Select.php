@@ -14,6 +14,7 @@ class Select extends Component
     public function __construct(
         public $options,
         public $label = null,
+        public $class = null,
         public $id = null,
         public $key = null,
     ) {

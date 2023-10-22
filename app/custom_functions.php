@@ -2,11 +2,12 @@
 
 use App\Models\Permission;
 use App\Models\RoleHasPermission;
+use App\Models\SiteSetting;
 use App\Models\UserHasRole;
 
-function myGlobalFunction()
+function setting()
 {
-  return 'This is a global function';
+  return SiteSetting::findOrFail(1);
 }
 function userHasPermission($permission)
 {

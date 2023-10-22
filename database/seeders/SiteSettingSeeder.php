@@ -15,6 +15,7 @@ class SiteSettingSeeder extends Seeder
     {
         SiteSetting::create([
             'name' => 'Demo Hospital Management',
+            'name_short' => 'DHMS',
             'address' => 'Jashore Sadar, Jashore',
             'contact' => '01571-166570',
         ]);

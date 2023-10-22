@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use app\Models\User;
 use App\Models\Role;
+use App\Models\UserHasRole;
 use Yajra\DataTables\Facades\DataTables;
-use DB;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 use App\Service\UserService;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -84,11 +85,21 @@ class UsersController extends Controller
     }
     public function delete($id)
     {
-        User::findOrFail($id)->delete();
+        User::findOrFail($id)->update([
+            'is_active' => false,
+        ]);
         return redirect()->route('user.index')->with('success', 'User Deleted Successfully');
     }
 
     public function assign_role($id){
-        
+        $data = User::findOrFail($id);
+        return $data->role->role_id;
+    }
+    public function assign_role_store(Request $request)
+    {
+        UserHasRole::where('user_id', $request->user_id)->update([
+            'role_id' => $request->role_id,
+        ]);
+        return back()->with('success', 'Role Re-assigned Successfully');
     }
 }

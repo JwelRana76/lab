@@ -5,6 +5,7 @@
       <x-card header="Site Setting">
         <x-form method="post" action="{{ route('site_setting.update',$setting->id) }}">
             <x-input id="name" value="{{ $setting->name }}" />
+            <x-input id="name_short" value="{{ $setting->name_short }}" />
             <x-input id="address" value="{{ $setting->address }}" />
             <x-input id="contact" value="{{ $setting->contact }}" />
             <x-input type="file" id="logo" />

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SiteSettingController;
@@ -40,10 +41,19 @@ Route::group(['middleware'=>['auth']], function() {
         Route::get('/delete/{id}', [UsersController::class, 'delete'])->name('delete');
         Route::post('/update/{id}', [UsersController::class, 'update'])->name('update');
         Route::get('/assign_role/{id}',[UsersController::class, 'assign_role'])->name('role_assign');
+        Route::post('/assign_role', [UsersController::class, 'assign_role_store'])->name('role_assign_store');
     });
     Route::group(['prefix' => 'setting/site_setting', 'as' => 'site_setting.'], function () {
         Route::get('/',[SiteSettingController::class, 'index'])->name('index');
         Route::post('/update/{id}', [SiteSettingController::class, 'update'])->name('update');
+    });
+    Route::group(['prefix' => 'doctor', 'as' => 'doctor.'], function () {
+        Route::get('/', [DoctorController::class, 'index'])->name('index');
+        Route::get('/create', [DoctorController::class, 'create'])->name('create');
+        Route::post('/store', [DoctorController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [DoctorController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [DoctorController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [DoctorController::class, 'delete'])->name('delete');
     });
     
 });
