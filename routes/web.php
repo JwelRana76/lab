@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\SiteSettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,10 @@ Route::group(['middleware'=>['auth']], function() {
         Route::get('/delete/{id}', [UsersController::class, 'delete'])->name('delete');
         Route::post('/update/{id}', [UsersController::class, 'update'])->name('update');
         Route::get('/assign_role/{id}',[UsersController::class, 'assign_role'])->name('role_assign');
+    });
+    Route::group(['prefix' => 'setting/site_setting', 'as' => 'site_setting.'], function () {
+        Route::get('/',[SiteSettingController::class, 'index'])->name('index');
+        Route::post('/update/{id}', [SiteSettingController::class, 'update'])->name('update');
     });
     
 });

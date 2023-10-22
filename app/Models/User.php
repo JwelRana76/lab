@@ -23,6 +23,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'is_active',
     ];
 
     
@@ -54,5 +55,10 @@ class User extends Authenticatable
 
     public function role(){
         return $this->hasOne(UserHasRole::class);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', 1);
     }
 }

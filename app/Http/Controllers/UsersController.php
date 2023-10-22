@@ -13,16 +13,18 @@ use App\Service\UserService;
 
 class UsersController extends Controller
 {
-    public function __construct()
-    {
-        $this->baseService = new UserService;
-    }
+    
     public function index()
     {
-        $user = $this->baseService->index();
+        $user = User::active();
         $columns = User::$columns;
         if (request()->ajax()) {
-            return $user;
+            return DataTables::of($user)
+        ->addColumn('role', function ($user) {
+            return $user->role->role->name ?? 'N/A';
+        })
+        ->addColumn('action', fn ($item) => view('pages.user.action', compact('item'))->render())
+        ->make(true);
         }
         $roles = Role::get();
         return view('pages.user.index', compact('columns','roles'));
@@ -37,27 +39,14 @@ class UsersController extends Controller
         ]);
         DB::beginTransaction();
         try {
-            if($request->user_id){
-                $user_data['name'] = $request->name;
-                $user_data['username'] = $request->username;
-                if($request->password){
-                    $user_data['password'] = Hash::make($request->password);
-                }
-                $user = User::findOrFail($request->user_id)->update($user_data);
-
-                $user->role->update([
-                    'role_id' => $request->role_id
-                ]);
-            }else{
-                $user = User::create([
-                    'name' => $request->name,
-                    'username' => $request->username,
-                    'password' => Hash::make($request->password),
-                ]);
-                $user->role()->create([
-                    'role_id' => $request->role_id,
-                ]);
-            }
+            $user = User::create([
+                'name' => $request->name,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+            ]);
+            $user->role()->create([
+                'role_id' => $request->role_id,
+            ]);
             DB::commit();
             return redirect()->route('user.index')->with('success', 'User Added Successfully');
         } catch (Exception $th) {
@@ -68,16 +57,29 @@ class UsersController extends Controller
     function edit($id)
     {
         $data = User::findOrFail($id);
-        $columns = User::$columns;
         $roles = Role::get();
-        return view('pages.user.index', compact('columns','roles'));
+        return view('pages.user.edit', compact('roles','data'));
     }
     public function update(Request $request, $id)
     {
-        User::findOrFail($request->update_id)->fill([
-            'name' => $request->name,
-            'role_id' => $request->role_id,
-        ])->save();
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'role_id' => 'required',
+        ]);
+
+        if($request->password){
+            $request->validate([
+                'password' => 'required|min:6',
+                'conform_password' => 'required|same:password',
+            ]);
+        }
+        $data['name'] = $request->name;
+        $data['username'] = $request->username;
+        if($request->password){
+            $data['password']= Hash::make($request->password);
+        }
+        User::findOrFail($id)->update($data);
         return redirect()->route('user.index')->with('success', 'User Updated Successfully');
     }
     public function delete($id)

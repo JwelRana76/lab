@@ -8,6 +8,7 @@ class UserService extends Service {
     protected $model = User::class;
 
     public function index(){
+        $user = $this->model::all();
       DataTables::of($user)
         ->addColumn('role', function ($user) {
             return $user->role->role->name ?? 'N/A';

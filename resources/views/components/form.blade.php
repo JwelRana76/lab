@@ -1,5 +1,5 @@
 <form method="{{ strtolower($method) == 'get' ? 'GET' : 'POST' }}" action="{{ $action }}" id="{{ $id }}"
-    {{ $attributes }} autocomplete="off">
+    {{ $attributes }} autocomplete="off" enctype="multipart/form-data">
     @csrf
 
     @unless ($method == 'GET')
