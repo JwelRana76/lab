@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SiteSettingController;
@@ -54,6 +55,18 @@ Route::group(['middleware'=>['auth']], function() {
         Route::get('/edit/{id}', [DoctorController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [DoctorController::class, 'update'])->name('update');
         Route::get('/delete/{id}', [DoctorController::class, 'delete'])->name('delete');
+    });
+    Route::group(['prefix' => 'patient', 'as' => 'patient.'], function () {
+        Route::get('/', [PatientController::class, 'index'])->name('index');
+        Route::get('/create', [PatientController::class, 'create'])->name('create');
+        Route::post('/store', [PatientController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [PatientController::class, 'edit'])->name('edit');
+        Route::post('/update/{id}', [PatientController::class, 'update'])->name('update');
+        Route::get('/delete/{id}', [PatientController::class, 'delete'])->name('delete');
+        Route::get('/old_patient', [PatientController::class, 'old_patient']);
+        Route::get('/old_patient_details/{id}', [PatientController::class, 'old_patient_details']);
+        Route::get('/upload_document/{id}', [PatientController::class, 'upload_document'])->name('upload_document');
+        Route::post('/upload_document_store/{id}', [PatientController::class, 'upload_document_store'])->name('upload_document_store');
     });
     
 });

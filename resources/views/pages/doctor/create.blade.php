@@ -1,5 +1,5 @@
 <x-admin title="Create Doctor">
-    <x-page-header head="Create Dcotor" />
+    {{-- <x-page-header head="Create Dcotor" /> --}}
     <x-card header="Create Doctor" link="{{ route('doctor.index') }}" title="Doctor List">
       <x-form action="{{ route('doctor.store') }}" method="post">
         <div class="row">

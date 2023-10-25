@@ -10,7 +10,7 @@
         id="{{ $id }}" 
         class="form-control" 
         type="{{ $type }}"
-        name="{{ $id }}" 
+        name="{{ $name == ''?$id:$name }}" 
         {{ $attributes }}
     />
     @error($id)

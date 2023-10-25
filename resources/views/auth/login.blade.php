@@ -42,7 +42,7 @@
                                 </div>
                                 <form class="user">
                                     <div class="form-group">
-                                        <input type="text" name="username" class="form-control form-control-user" placeholder="Enter username...">
+                                        <input type="text" name="username" autofocus class="form-control form-control-user" placeholder="Enter username...">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="password" class="form-control form-control-user"

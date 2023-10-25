@@ -1,7 +1,7 @@
 <div class="form-group mb-2 {{ $class }}">
     @if (!$attributes['hide-label'])
         <label class="form-label" for="{{ $id }}">
-            {{ ucwords(str_replace('_', ' ', $id)) }}
+            {{ ucwords(str_replace('_', ' ', $label ?? $id)) }}
             <strong>
                 {{$attributes['required'] ? '*' : ''}}
             </strong>

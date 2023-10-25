@@ -32,21 +32,21 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+        <a class="nav-link {{Request::is('patient*')?'':'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-users"></i>
             <span>Patient</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse {{Request::is('patient*')?'show':''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html"><i class="fas fa-fw fa-arrow-right mr-2"></i> Patient List</a>
-                <a class="collapse-item" href="cards.html"><i class="fas fa-fw fa-arrow-right mr-2"></i> Add Patient</a>
+                <a class="collapse-item {{Request::is('patient/create')?'active':''}}" href="{{ route('patient.create') }}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Add Patient</a>
+                <a class="collapse-item {{Request::is('patient')?'active':''}}" href="{{ route('patient.index') }}"><i class="fas fa-fw fa-arrow-right mr-2"></i> Patient List</a>
             </div>
         </div>
     </li>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link {{Request::is('setting*')?'':'collapsed'}}" href="#" data-toggle="collapse" data-target="#doctor"
+        <a class="nav-link {{Request::is('doctor*')?'':'collapsed'}}" href="#" data-toggle="collapse" data-target="#doctor"
             aria-expanded="true" aria-controls="doctor">
             <i class="fas fa-fw fa-user-doctor"></i>
             <span>Doctor</span>
