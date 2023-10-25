@@ -111,4 +111,9 @@ class PatientController extends Controller
         $message = $this->baseService->upload_document($data, $id);
         return redirect()->route('patient.index')->with($message);
     }
+    public function view($id)
+    {
+        $patient = Patient::findOrFail($id);
+        return view('pages.patient.view', compact('patient'));
+    }
 }

@@ -67,6 +67,7 @@ Route::group(['middleware'=>['auth']], function() {
         Route::get('/old_patient_details/{id}', [PatientController::class, 'old_patient_details']);
         Route::get('/upload_document/{id}', [PatientController::class, 'upload_document'])->name('upload_document');
         Route::post('/upload_document_store/{id}', [PatientController::class, 'upload_document_store'])->name('upload_document_store');
+        Route::get('/view/{id}', [PatientController::class, 'view'])->name('view');
     });
     
 });

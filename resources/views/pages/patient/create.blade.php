@@ -1,6 +1,6 @@
 <x-admin title="Create Patient">
     {{-- <x-page-header head="Create Patient" /> --}}
-    <x-card header="Create Patient" link="{{ route('patient.index') }}" title="Patient List">
+    <x-card header="Create Patient" link="{{ route('patient.index') }}" title="Patient List"  sms="yes">
       <x-form action="{{ route('patient.store') }}" method="post" id="patient_form">
         <div class="row">
           <x-select id="type" label="Patient Type" selectedId="1" :options="$type" required class="col-md-6 col-xl-4 col-sm-12" />

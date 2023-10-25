@@ -15,6 +15,7 @@ class Card extends Component
         public $header ='',
         public $link = '',
         public $title = '',
+        public $sms = '',
     )
     {
         //

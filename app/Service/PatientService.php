@@ -88,7 +88,6 @@ class PatientService {
   }
   public function upload_document($datas, $id)
   {
-    dd($datas);
     foreach ($datas as $key => $item) {
       $data['patient_id'] = $id;
       $data['document'] = time() . '_' . $key . '.' . $item->getClientOriginalExtension();

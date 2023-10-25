@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\CssSelector\Node\FunctionNode;
 
 class Patient extends Model
 {
@@ -34,9 +35,17 @@ class Patient extends Model
     {
         return $this->belongsTo(Religion::class);
     }
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
     public function blood_group()
     {
         return $this->belongsTo(BloodGroup::class);
+    }
+    public function documents()
+    {
+        return $this->hasMany(PatientDocument::class);
     }
     public function getAgesAttribute()
     {
